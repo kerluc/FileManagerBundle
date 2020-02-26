@@ -137,10 +137,11 @@ class ManagerController extends Controller
 
         if ($isJson) {
             $fileList = $this->renderView('@ArtgrisFileManager/views/_manager_view.html.twig', $parameters);
-
-            return new JsonResponse(['data' => $fileList, 'badge' => $finderFiles->count(), 'treeData' => $directoriesArbo]);
+            $response = new JsonResponse(['data' => $fileList, 'badge' => $finderFiles->count(), 'treeData' => $directoriesArbo]);
+			$response->setEncodingOptions(JsonResponse::DEFAULT_ENCODING_OPTIONS | \JSON_INVALID_UTF8_IGNORE);
+			return $response;
         }
-        $parameters['treeData'] = json_encode($directoriesArbo);
+        $parameters['treeData'] = \json_encode($directoriesArbo, \JSON_INVALID_UTF8_IGNORE);
 
         $form = $this->get('form.factory')->createNamedBuilder('rename', FormType::class)
             ->add('name', TextType::class, [
