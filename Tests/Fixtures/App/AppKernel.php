@@ -16,20 +16,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         ];
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
-        if ($this->isSymfony3()) {
-            $loader->load(function (ContainerBuilder $container) {
-                $container->loadFromExtension('framework', [
-                    'assets' => null,
-                ]);
-            });
-        }
     }
 
     /**
@@ -46,10 +38,5 @@ class AppKernel extends Kernel
     public function getLogDir()
     {
         return __DIR__.'/../../../build/kernel_logs/'.$this->getEnvironment();
-    }
-
-    protected function isSymfony3()
-    {
-        return 3 === Kernel::MAJOR_VERSION;
     }
 }
