@@ -56,8 +56,8 @@ $(function () {
     });
 
     function renameFile($renameModalButton) {
-        $('#form_name').val($renameModalButton.data('name'));
-        $('#form_extension').val($renameModalButton.data('extension'));
+        $('#rename_f_name').val($renameModalButton.data('name'));
+        $('#rename_f_extension').val($renameModalButton.data('extension'));
         $renameModal.find('form').attr('action', $renameModalButton.data('href'))
     }
 
@@ -144,8 +144,8 @@ $(function () {
 
     // preselected
     $renameModal.on('shown.bs.modal', function () {
-        $('#form_name').select().mouseup(function () {
-            $('#form_name').unbind("mouseup");
+        $('#rename_f_name').select().mouseup(function () {
+            $('#rename_f_name').unbind("mouseup");
             return false;
         });
     });

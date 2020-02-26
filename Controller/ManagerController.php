@@ -86,23 +86,18 @@ class ManagerController extends Controller
                 break;
         }
 
-        if ($fileManager->getTree()) {
-            $finderFiles->files()->name($regex)->filter(function (SplFileInfo $file) {
-                return $file->isReadable();
-            });
-        } else {
-            $finderFiles->filter(function (SplFileInfo $file) use ($regex) {
-                if ('file' === $file->getType()) {
-                    if (preg_match($regex, $file->getFilename())) {
-                        return $file->isReadable();
-                    }
+        
+		$finderFiles->filter(function (SplFileInfo $file) use ($regex) {
+			if ('file' === $file->getType()) {
+				if (preg_match($regex, $file->getFilename())) {
+					return $file->isReadable();
+				}
 
-                    return false;
-                }
+				return false;
+			}
 
-                return $file->isReadable();
-            });
-        }
+			return $file->isReadable();
+		});
 
         $formDelete = $this->createDeleteForm()->createView();
         $fileArray = [];
