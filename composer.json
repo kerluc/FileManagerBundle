@@ -1,7 +1,7 @@
 {
-  "name": "artgris/filemanager-bundle",
+  "name": "kerluc/filemanager-bundle",
   "type": "symfony-bundle",
-  "description": "FileManager is a simple Multilingual File Manager Bundle for Symfony",
+  "description": "FileManager is a simple Multilingual File Manager Bundle for Symfony (fork)",
   "keywords": [
     "symfony",
     "bundle",

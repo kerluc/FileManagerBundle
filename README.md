@@ -1,6 +1,8 @@
 FileManagerBundle
 =================
 
+This is a fork to fullfill some requirements and fix some bugs, please redirect to main repository.
+
 [![Tests][1]][2] [![Code Quality][3]][4] [![Code Coverage][5]][6] [![Symfony 2.x, 3.x and 4.x][7]][8]
 
 FileManager is a simple Multilingual File Manager Bundle for Symfony
